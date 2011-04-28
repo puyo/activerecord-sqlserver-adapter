@@ -915,7 +915,7 @@ module ActiveRecord
       def raw_connection_do(sql)
         case @connection_options[:mode]
         when :dblib
-          @insert_sql ? @connection.execute(sql).insert : @connection.execute(sql).do
+          @connection.execute(sql).do
         when :odbc
           @connection.do(sql)
         else :adonet
@@ -945,7 +945,8 @@ module ActiveRecord
         @insert_sql = true
         case @connection_options[:mode]
         when :dblib
-          execute(sql, name) || id_value
+          execute(sql, name)
+          id_value || select_value("SELECT CAST(SCOPE_IDENTITY() AS bigint) AS Ident")
         else
           super || select_value("SELECT CAST(SCOPE_IDENTITY() AS bigint) AS Ident")
         end
