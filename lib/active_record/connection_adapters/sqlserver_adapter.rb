@@ -147,7 +147,7 @@ module ActiveRecord
     class SQLServerAdapter < AbstractAdapter
       
       ADAPTER_NAME                = 'SQLServer'.freeze
-      VERSION                     = '2.3.19'.freeze
+      VERSION                     = '2.3.20'.freeze
       DATABASE_VERSION_REGEXP     = /Microsoft SQL Server\s+(\d{4})/
       SUPPORTED_VERSIONS          = [2000,2005,2008].freeze
       LIMITABLE_TYPES             = ['string','integer','float','char','nchar','varchar','nvarchar'].to_set.freeze
@@ -158,7 +158,7 @@ module ActiveRecord
         :adonet => ['TypeError','System::Data::SqlClient::SqlException']
       }
       LOST_CONNECTION_MESSAGES    = {
-        :dblib  => [/closed connection/, /dead or not enabled/, /server failed/i],
+        :dblib  => [/closed connection/, /dead or not enabled/, /server failed/i, /connection timed out/],
         :odbc   => [/link failure/, /server failed/, /connection was already closed/, /invalid handle/i],
         :adonet => [/current state is closed/, /network-related/]
       }

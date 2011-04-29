@@ -1,8 +1,10 @@
+* 2.3.20 * 
+
+* Reconnect on TinyTDS::Error with message matching 'connection timed out'.
+
 * 2.3.19 * 
 
-* Fix fetching the SCOPE_IDENTITY() for dblib mode, with brew installed freetds
-  0.82 and tiny_tds 0.4.4 (still not sure what the problem was - was always
-  returning 19 from TinyTDS::Result#insert.
+* Fix fetching the SCOPE_IDENTITY() for dblib mode, with brew installed freetds 0.82 and tiny_tds 0.4.4 (still not sure what the problem was - was always returning 19 from TinyTDS::Result#insert).
 
 * 2.3.18 * 
 
